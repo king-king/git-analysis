@@ -1,0 +1,23 @@
+{
+  "name": "git-analysis",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/king-king/git-analysis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/king-king/git-analysis/issues"
+  },
+  "homepage": "https://github.com/king-king/git-analysis#readme",
+  "devDependencies": {
+    "git-stats": "^2.10.9",
+    "gry": "^5.0.7"
+  }
+}
