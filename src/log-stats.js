@@ -2,7 +2,7 @@ const stats = require('../lib/log').stats;
 const fs = require('fs');
 
 stats({
-    cmd: 'C:/Users/wangqun6/Downloads/TEST',
+    cwd: 'C:/Users/wangqun6/Downloads/TEST',
     args: {
         author: 'wangqun6',
         after: '2017-12-03',
