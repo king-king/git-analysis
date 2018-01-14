@@ -108,7 +108,9 @@ module.exports = {
         "no-undef": 2,
         "no-undef-init": 2,
         "no-undefined": 2,
-        "no-use-before-define": 2,
+        "no-use-before-define": [2, {
+            "functions": false
+        }],
         "no-lonely-if": 2,
         "no-mixed-spaces-and-tabs": 2,
         "no-multi-assign": 2,

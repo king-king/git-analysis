@@ -18,6 +18,7 @@
   "homepage": "https://github.com/king-king/git-analysis#readme",
   "devDependencies": {
     "git-stats": "^2.10.9",
-    "gry": "^5.0.7"
+    "gry": "^5.0.7",
+    "iconv-lite": "^0.4.19"
   }
 }

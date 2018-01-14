@@ -1,0 +1,1 @@
+const stat = require('../lib/log').stats;
