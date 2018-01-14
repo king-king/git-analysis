@@ -7,11 +7,12 @@ stats({
     cwd: 'C:/Users/wangqun6/Downloads/TEST',
     args: {
         author: 'wangqun6',
-        after: '2017-11-01',
+        after: '2017-01-01',
         before: '2017-12-31'
     }
 }).then((content) => {
     // 成功
+    console.log('spend：' + content.spend + 's');
     fs.writeFileSync('./out.json', JSON.stringify(content.obj, null, 4), 'utf-8');
     fs.writeFileSync('./out.txt', content.raw, 'utf-8');
 }, (err) => {
