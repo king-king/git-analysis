@@ -28,7 +28,7 @@ module.exports = {
             "always"
         ],
         "no-new-object": 2,
-        "no-console": 0,
+        "no-console": 2,
         "for-direction": 2,
         "no-unused-vars": 2,
         "no-cond-assign": 1,

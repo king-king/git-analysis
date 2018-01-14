@@ -10,7 +10,7 @@ stats({
     }
 }).then((content) => {
     // 成功
-    fs.writeFileSync('./out.txt', content, 'utf-8');
+    fs.writeFileSync('./out.json', JSON.stringify(content), 'utf-8');
 }, (err) => {
     // 失败
     console.log(err);
