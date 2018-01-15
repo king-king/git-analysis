@@ -17,17 +17,31 @@
 <body>
     <script src="./util.js"></script>
     <script src="./data/ibdCommitData.js"></script>
+    <script src="./data/rtbCommitData.js"></script>
     <script>
         makeGrid(ibdCommitData, {
             size: 10,
-            margin: 1
+            margin: 1,
+            maxColor: '#0403d2',
+            minColor: '#a4b0ed'
         });
-
+        makeGrid(rtbCommitData, {
+            size: 10,
+            margin: 1,
+            maxColor: '#a204a3',
+            minColor: '#e7ade7'
+        });
+        makeGrid(analysisCommitData, {
+            size: 10,
+            margin: 1,
+            maxColor: '#a204a3',
+            minColor: '#e7ade7'
+        });
         // 计算总天数
         function makeGrid(data, options, computeTag) {
             // computeTag->'commits','filesNum','lineNum'
             const colorLen = 100;
-            const colors = util.color('#b9e2b9', '#007f00', colorLen);
+            const colors = util.color(options.minColor || '#b9e2b9', options.maxColor || '#007f00', colorLen);
             const startDate = util.time(2017, 0, 1);
             const days = (util.time(2018, 0, 1) - startDate) / (1000 * 60 * 60 * 24);
             const weeks = Math.ceil(days / 7);
@@ -62,10 +76,15 @@
             let minValue = Math.min.apply(this, values);
             let border = util.element('div', {
                 css: {
+                    display: 'inline-block',
+                    height: '100%'
+                }
+            }, util.element('div', {
+                css: {
                     padding: '50px',
                     height: (options.size + options.margin * 2) * 8 + 'px'
                 }
-            }, document.body);
+            }, document.body));
             for (let w = 0; w < weeks; w++) {
                 let col = util.element('div', {
                     css: {

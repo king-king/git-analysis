@@ -3,8 +3,9 @@
 const stats = require('../lib/log').stats;
 const fs = require('fs');
 
+
 stats({
-    cwd: 'C:/Users/wangqun6/Downloads/TEST',
+    cwd: 'E:/',
     args: {
         author: 'wangqun6',
         after: '2016-12-31',
