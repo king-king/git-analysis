@@ -18,15 +18,22 @@
     <script src="./util.js"></script>
     <script src="./data/ibdCommitData.js"></script>
     <script>
-        makeGrid(ibdCommitData);
+        makeGrid(ibdCommitData, {
+            size: 10,
+            margin: 1
+        });
 
         // 计算总天数
-        function makeGrid(data) {
+        function makeGrid(data, options, computeTag) {
+            // computeTag->'commits','filesNum','lineNum'
+            const colors = util.color('#007f00', '#95f595', 100);
             const startDate = util.time(2017, 0, 1);
             const days = (util.time(2018, 0, 1) - startDate) / (1000 * 60 * 60 * 24);
             const weeks = Math.ceil(days / 7);
             let startDay = (startDate.getDay() - 1 + 7) % 7;
             let drawData = {};
+            let values = [];
+
             data.commits.forEach(function (item, index) {
                 let date = item.date;
                 let step = (new Date(date) - startDate) / (1000 * 60 * 60 * 24);
@@ -47,15 +54,20 @@
                     drawData[tag].commits++;
                 }
             });
+            for (let tag in drawData) {
+                values.push(computeTag ? computeTag : 'commits');
+            }
+            let maxValue = Math.max.apply(this, values);
+            let minValue = Math.min.apply(this, values);
             let border = util.element('div', {
                 css: {
-                    height: '400px'
+                    padding: '50px',
+                    height: (options.size + options.margin * 2) * 8 + 'px'
                 }
             }, document.body);
             for (let w = 0; w < weeks; w++) {
                 let col = util.element('div', {
                     css: {
-                        // width: '20px',
                         height: '100%',
                         float: 'left'
                     }
@@ -64,11 +76,11 @@
                     let tag = w + '-' + d;
                     let block = util.element('div', {
                         css: {
-                            border: '2px solid white',
-                            width: '10px',
-                            height: '10px',
+                            border: options.margin + 'px solid white',
+                            width: options.size + 'px',
+                            height: options.size + 'px',
                             cursor: drawData[tag] ? 'pointer' : '',
-                            background: drawData[tag] ? 'green' : 'white'
+                            background: drawData[tag] ? 'hsl(120, 100%, 25%)' : 'white'
                         }
                     }, col);
                 }
