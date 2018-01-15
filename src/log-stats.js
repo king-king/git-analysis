@@ -14,6 +14,8 @@ stats({
     // 成功
     console.log('耗时 ' + content.spend + ' s');
     console.log('共有 ' + content.obj.commits.length + ' 次提交');
+    console.log(`共修改${content.obj.changeFileNums}个文件`);
+    console.log(`共修改${content.obj.changeLineNums}行`);
 
     fs.writeFileSync('./out.json', JSON.stringify(content.obj, null, 4), 'utf-8');
     fs.writeFileSync('./out.txt', content.raw, 'utf-8');
