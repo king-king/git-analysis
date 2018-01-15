@@ -16,6 +16,7 @@
                         //     property[key].parent.appendChild(el);
                         //     break;
                     default:
+                        el.setAttribute(key, property[key]);
                         break;
                 }
             }
