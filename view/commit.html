@@ -22,37 +22,68 @@
     <script src="./data/debugCommitData.js"></script>
     <script src="./data/monitorCommitData.js"></script>
     <script>
-        makeGrid(ibdCommitData, {
-            size: 10,
-            margin: 1,
-            maxColor: '#0403d2',
-            minColor: '#a4b0ed'
+        let allData = [];
+        [ibdCommitData, rtbCommitData, analysisCommitData, debugCommitData, monitorCommitData].forEach((d) => {
+            allData = allData.concat(d.commits);
         });
-        makeGrid(rtbCommitData, {
-            size: 10,
-            margin: 1,
-            maxColor: '#a204a3',
-            minColor: '#e7ade7'
+        let data = [
+            // data
+            {
+                data: {
+                    commits: allData
+                },
+                options: {
+                    size: 10,
+                    margin: 1,
+                    maxColor: '#f42905',
+                    minColor: '#f4d8d3'
+                }
+            },
+            {
+                data: ibdCommitData,
+                options: {
+                    size: 10,
+                    margin: 1,
+                    maxColor: '#0403d2',
+                    minColor: '#a4b0ed'
+                }
+            }, {
+                data: rtbCommitData,
+                options: {
+                    size: 10,
+                    margin: 1,
+                    maxColor: '#a204a3',
+                    minColor: '#e7ade7'
+                }
+            }, {
+                data: analysisCommitData,
+                options: {
+                    size: 10,
+                    margin: 1,
+                    maxColor: '#c53002',
+                    minColor: '#e6b3a3'
+                }
+            }, {
+                data: debugCommitData,
+                options: {
+                    size: 10,
+                    margin: 1,
+                    maxColor: '#9fab02',
+                    minColor: '#dcdbc0'
+                }
+            }, {
+                data: monitorCommitData,
+                options: {
+                    size: 10,
+                    margin: 1,
+                    maxColor: '#fd8405',
+                    minColor: '#fdebd8'
+                }
+            }
+        ];
+        data.forEach((d) => {
+            makeGrid(d.data, d.options);
         });
-        makeGrid(analysisCommitData, {
-            size: 10,
-            margin: 1,
-            maxColor: '#c53002',
-            minColor: '#e6b3a3'
-        });
-        makeGrid(debugCommitData, {
-            size: 10,
-            margin: 1,
-            maxColor: '#9fab02',
-            minColor: '#dcdbc0'
-        });
-        makeGrid(monitorCommitData, {
-            size: 10,
-            margin: 1,
-            maxColor: '#fd8405',
-            minColor: '#fdebd8'
-        });
-
         // 计算总天数
         function makeGrid(data, options, computeTag) {
             // computeTag->'commits','filesNum','lineNum'
@@ -98,7 +129,7 @@
             }, util.element('div', {
                 css: {
                     padding: '50px',
-                    height: (options.size + options.margin * 2) * 8 + 'px'
+                    height: (options.size + options.margin * 2) * 7 + 'px'
                 }
             }, document.body));
             for (let w = 0; w < weeks; w++) {
