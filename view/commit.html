@@ -26,6 +26,8 @@
         [ibdCommitData, rtbCommitData, analysisCommitData, debugCommitData, monitorCommitData].forEach((d) => {
             allData = allData.concat(d.commits);
         });
+        console.log(`一共${allData.length}次提交`);
+
         let data = [
             // data
             {
