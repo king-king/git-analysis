@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./util.js"></script>
+    <script>
+        // 计算总天数
+        function makeGrid(data) {
+            let border = util.element('div', {
+                css: {
+                    height: '400px'
+                }
+            }, document.body);
+            const startDate = util.time(2017, 0, 1);
+            const days = (util.time(2018, 0, 1) - startDate) / (1000 * 60 * 60 * 24);
+            const weeks = Math.ceil(days / 7);
+            let day = startDate.getDay();
+            for (let w = 0; w < weeks; w++) {
+                let col = element('div', {
+                    css: {
+                        width: '15px',
+                        height: '100%'
+                    }
+                }, border);
+            }
+        }
+    </script>
+</body>
+
+</html>

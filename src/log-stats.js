@@ -7,8 +7,8 @@ stats({
     cwd: 'C:/Users/wangqun6/Downloads/TEST',
     args: {
         author: 'wangqun6',
-        after: '2017-01-01',
-        before: '2017-12-31'
+        after: '2016-12-31',
+        before: '2018-01-01'
     }
 }).then((content) => {
     // 成功
