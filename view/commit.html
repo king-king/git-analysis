@@ -18,6 +18,9 @@
     <script src="./util.js"></script>
     <script src="./data/ibdCommitData.js"></script>
     <script src="./data/rtbCommitData.js"></script>
+    <script src="./data/analysisCommitData.js"></script>
+    <script src="./data/debugCommitData.js"></script>
+    <script src="./data/monitorCommitData.js"></script>
     <script>
         makeGrid(ibdCommitData, {
             size: 10,
@@ -34,9 +37,22 @@
         makeGrid(analysisCommitData, {
             size: 10,
             margin: 1,
-            maxColor: '#a204a3',
-            minColor: '#e7ade7'
+            maxColor: '#c53002',
+            minColor: '#e6b3a3'
         });
+        makeGrid(debugCommitData, {
+            size: 10,
+            margin: 1,
+            maxColor: '#9fab02',
+            minColor: '#dcdbc0'
+        });
+        makeGrid(monitorCommitData, {
+            size: 10,
+            margin: 1,
+            maxColor: '#fd8405',
+            minColor: '#fdebd8'
+        });
+
         // 计算总天数
         function makeGrid(data, options, computeTag) {
             // computeTag->'commits','filesNum','lineNum'

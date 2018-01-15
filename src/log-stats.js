@@ -5,7 +5,7 @@ const fs = require('fs');
 
 
 stats({
-    cwd: 'E:/',
+    cwd: 'E:',
     args: {
         author: 'wangqun6',
         after: '2016-12-31',
