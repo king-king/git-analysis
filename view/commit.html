@@ -21,11 +21,13 @@
     <script src="./data/analysisCommitData.js"></script>
     <script src="./data/debugCommitData.js"></script>
     <script src="./data/monitorCommitData.js"></script>
+    <script src="./data/temp1CommitData.js"></script>
     <script>
         let allData = [];
-        [ibdCommitData, rtbCommitData, analysisCommitData, debugCommitData, monitorCommitData].forEach((d) => {
-            allData = allData.concat(d.commits);
-        });
+        [ibdCommitData, rtbCommitData, analysisCommitData, debugCommitData, monitorCommitData, temp1CommitDta].forEach(
+            (d) => {
+                allData = allData.concat(d.commits);
+            });
         console.log(`一共${allData.length}次提交`);
 
         let data = [
@@ -81,6 +83,14 @@
                     maxColor: '#fd8405',
                     minColor: '#fdebd8'
                 }
+            }, {
+                data: temp1CommitDta,
+                options: {
+                    size: 10,
+                    margin: 1,
+                    maxColor: '#04b5f5',
+                    minColor: '#ddf0f7'
+                }
             }
         ];
         data.forEach((d) => {
@@ -127,6 +137,7 @@
                 css: {
                     display: 'inline-block',
                     height: '100%',
+                    background: 'rgba(200,200,200,0.1)'
                 }
             }, util.element('div', {
                 css: {
@@ -143,7 +154,7 @@
                 }, border);
                 for (let d = 0; d < 7; d++) {
                     let tag = w + '-' + d;
-                    let color = 'white';
+                    let color = 'transparent';
                     if (drawData[tag]) {
                         let value = drawData[tag][computeTag ? computeTag : 'commits'];
                         let index = (value - minValue) / (maxValue - minValue) * colorLen << 0;
@@ -151,13 +162,15 @@
                     }
                     let block = util.element('div', {
                         css: {
-                            border: options.margin + 'px solid white',
+                            margin: options.margin + 'px',
                             width: options.size + 'px',
                             height: options.size + 'px',
                             cursor: drawData[tag] ? 'pointer' : '',
                             background: color
                         },
-                        title: drawData[tag] && drawData[tag][computeTag || 'commits']
+                        title: drawData[tag] ? drawData[tag].date + '\n' + drawData[tag][computeTag ||
+                            'commits'
+                        ] : ''
                     }, col);
                 }
             }
