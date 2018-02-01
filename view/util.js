@@ -63,9 +63,18 @@
         }
         return output;
     }
+
+    function loopObj(obj, func) {
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                func(key, obj[key]);
+            }
+        }
+    }
     window.util = {
         element,
         time,
-        color
+        color,
+        loopObj
     };
 })();
