@@ -6,6 +6,8 @@
 //  * minValue:number
 //  * colors:array
 //  */
+
+/* global util */
 function grid(container, options) {
     // 计算一共有多少周
     const year = Number(options.date.split('-')[0]);
