@@ -61,12 +61,21 @@ function grid(container, options) {
         maxValue = maxValue > v.value ? maxValue : v.value;
     });
 
+    gc.fillStyle = 'rgba(200,200,200,0.1)';
+    gc.fillRect(0, dy, width, height + dy);
+    // 绘制文字
+    [1, 3, 6, 9, 12].forEach((month) => {
+        let curDateIndex = (util.time(year, month - 1, 0) - startDate) / (1000 * 60 * 60 * 24 * 7) << 0;
+        gc.font = 'bolder 14px/15px 微软雅黑';
+        gc.fillStyle = '#333';
+        gc.fillText(month, curDateIndex / weeks * width << 0, 15);
+    });
     util.loopObj(drawData, function (key, d) {
         // 按照是第几周第几日，直接在相应的位置绘制
         let weekIndex = key.split('-')[0];
         let dateIndex = key.split('-')[1];
         let index = (d.value - minValue) / (maxValue - minValue) * options.colors.length << 0;
         gc.fillStyle = options.colors[index];
-        gc.fillRect((w + padding) * weekIndex, (w + padding) * dateIndex, w, w);
+        gc.fillRect((w + padding) * weekIndex, (w + padding) * dateIndex + dy, w, w);
     });
 }
